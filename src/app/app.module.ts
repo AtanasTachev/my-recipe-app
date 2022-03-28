@@ -10,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { CommonModule } from '@angular/common';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -18,34 +20,34 @@ import { LoginComponent } from './login/login.component';
     HeaderComponent,
     FooterComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    UserModule,
+    CommonModule 
   ],
   providers: [],
   bootstrap: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent
+    AppComponent
 ]
 })
 export class AppModule { }
 
-@Injectable() 
-export class PostService {
-  constructor(private http: HttpClient) {}
-  getAllPosts(): Observable<Post[]> {
-    const url = 'https://jsonplaceholder.typicode.com/posts';
-    return this.http.get<Post[]>(url);
-  }
-}
+// @Injectable() 
+// export class PostService {
+//   constructor(private http: HttpClient) {}
+//   getAllPosts(): Observable<Post[]> {
+//     const url = 'https://jsonplaceholder.typicode.com/posts';
+//     return this.http.get<Post[]>(url);
+//   }
+// }
 
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+// interface Post {
+//   userId: number;
+//   id: number;
+//   title: string;
+//   body: string;
+// }
