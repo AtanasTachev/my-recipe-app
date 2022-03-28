@@ -3,12 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface IUser {
-  "specialty": string,
-  "title": string,
-  "firstName": string,
-  "lastName": string,
-  "email":string,
-  "password": string
+  "name": string,
+  "username": string,
+  "email": string,
+  "address": string,
+  "phone":string
 }
 
 @Injectable({
@@ -19,7 +18,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) {}
 
     getUser$(): Observable<IUser[]>{
-      return this.httpClient.get<IUser[]>('https://git.heroku.com/workflow-project-server.git')
+      return this.httpClient.get<IUser[]>('https://jsonplaceholder.typicode.com/users')
     }
 }
 
