@@ -3,14 +3,17 @@ import { PostService } from "./app.module";
 
 
 export class PostComponent implements OnInit {
-    posts: Posts[] = [];
+    // posts: Posts[] = [];
     constructor(
       private postService: PostService
     ) {}
     ngOnInit(): void {
       this.postService.getAllPosts()
       .subscribe(data => {
-        this.posts = data;
+        // this.posts = data;
       });
+    }
+    ngOnChanges(): void {
+        
     }
   }
