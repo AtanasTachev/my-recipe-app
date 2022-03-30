@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
 import { UserModule } from './user/user.module';
+import { RecipesModule } from './recipes/recipes.module';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,14 @@ import { UserModule } from './user/user.module';
     FooterComponent,
     RegisterComponent,
     LoginComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     UserModule,
+    RecipesModule,
     CommonModule 
   ],
   providers: [],
