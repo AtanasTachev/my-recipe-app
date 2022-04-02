@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators'
 import { environment } from 'src/environments/environment';
+import { IBase } from '../interfaces/base';
 
 export interface CreateUserDto { 
   name: string,
@@ -13,12 +14,13 @@ export interface CreateUserDto {
   phone: string
 }
 
-export interface IUser {
-  "name": string,
-  "username": string,
-  "email": string,
-  "address": string,
-  "phone":string
+export interface IUser extends IBase{
+  name: string,
+  username: string,
+  email: string,
+  password: string,
+  address: string,
+  phone:string
 }
 
 @Injectable(
@@ -44,7 +46,7 @@ export class UserService {
 
   login$(userData: { username: string, password: string }): Observable<IUser> {
       return this.httpClient
-        .post<IUser>(`${environment.apiUrl}/login`, userData, { withCredentials: true, observe: 'response' })
+        .post<IUser>(`${environment.apiUrl}/auth/login`, userData, { withCredentials: true, observe: 'response' })
         .pipe(
           tap(response => console.log(response)),
           map(response => response.body),
@@ -54,8 +56,13 @@ export class UserService {
       }
       
       register$(userData: CreateUserDto): Observable<IUser> {
-      console.log(environment.apiUrl);
-      return this.httpClient.post<IUser>(`${environment.apiUrl}/register`, userData, { withCredentials: true })
+      // console.log(environment.apiUrl);
+      return this.httpClient.post<IUser>(`${environment.apiUrl}/auth/register`, userData, { withCredentials: true })
+    }
+
+    getProfile$(): Observable<IUser> {
+      return this.httpClient.get<IUser>(`${environment.apiUrl}/users/profile`, { withCredentials: true })
+        .pipe(tap(user => this.currentUser = user))
     }
 }
 
