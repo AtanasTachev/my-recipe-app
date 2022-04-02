@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { backendUrls } from '../../assets/constants';
+// import { backendUrls } from '../../assets/constants';
 
 export interface IRecipe {
   "title": string,
@@ -11,6 +11,9 @@ export interface IRecipe {
   "imageUrl":string
 }
 
+const baseUrl = 'http://localhost:3030'
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +21,7 @@ export class RecipeService {
 
   constructor(private httpClient: HttpClient) {}
 
-    getUser$(): Observable<IRecipe[]>{
-      return this.httpClient.get<IRecipe[]>(backendUrls.baseUrl)
+    getRecipe$(): Observable<IRecipe[]>{
+      return this.httpClient.get<IRecipe[]>(baseUrl)
     }
 }

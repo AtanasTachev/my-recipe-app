@@ -1,1 +1,9 @@
-<p>recipe works!</p>
+<ul class="wrapper">
+    <li *ngFor="let recipe of recipes">
+        <div class="single">
+            <h3 class="recipe-title">{{recipe.title}}</h3>
+            <img class="small" src={{recipe.imageUrl}} alt="recipe-prepared"/>
+            <button class="details-btn">Details</button>
+        </div>
+    </li>
+</ul>

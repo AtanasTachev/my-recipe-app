@@ -1,0 +1,9 @@
+<form class="form-box" [formGroup]="loginFormGroup" (ngSubmit)="handleLogin()">
+    <ul class="form">
+        <li class="items" name="username">username: <input formControlName="username"></li>
+        <li class="items" name="password">password: <input formControlName="password"></li>
+    </ul>
+
+    <button type="button" class="btn" (click)="handleLogin">login</button>
+    <a class="message" routerLink="/register">not registered yet? go to register</a>
+</form>

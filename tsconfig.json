@@ -28,5 +28,13 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "paths": {
+    "rxjs": [
+      "node_modules/rxjs"
+    ],
+    "rxjs/*": [
+      "node_modules/rxjs/*"
+    ]
+}
 }
