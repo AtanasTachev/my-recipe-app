@@ -1,10 +1,16 @@
-<form class="form-box" [formGroup]="registerFormGroup" (ngSubmit)="handleRegister()">
+<form class="form-box" [formGroup]="registerFormGroup" (ngSubmit)="handleRegister()" #f="ngForm">
     <ul class="form">
         <li class="items" name="name">name: <input formControlName="name"></li>
         <li class="items" name="username">username: <input formControlName="username"></li>
         <li class="items" name="email">email: <input formControlName="email"></li>
         <li class="items" name="address">address: <input formControlName="address"></li>
         <li class="items" name="phone">phone: <input formControlName="username"></li>
+        <li>
+            <ul formGroupName="passwords">
+                <li class="items" name="password">password: <input formControlName="password"></li>
+                <li class="items" name="repeatPassword">password: <input formControlName="repeatPassword"></li>
+            </ul>
+        </li>
     </ul>
     <button class="btn">register</button>
     <a routerLink="/login" class="message">already registered? go to login</a>

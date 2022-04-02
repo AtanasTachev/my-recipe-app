@@ -1,4 +1,4 @@
-<form class="form-box" [formGroup]="loginFormGroup" (ngSubmit)="handleLogin()">
+<form class="form-box" [formGroup]="loginFormGroup" (ngSubmit)="handleLogin()" #f="ngForm">
     <ul class="form">
         <li class="items" name="username">username: <input formControlName="username"></li>
         <li class="items" name="password">password: <input formControlName="password"></li>

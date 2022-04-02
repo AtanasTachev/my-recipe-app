@@ -46,11 +46,11 @@ export class UserService {
 
   login$(userData: { username: string, password: string }): Observable<IUser> {
       return this.httpClient
-        .post<IUser>(`${environment.apiUrl}/auth/login`, userData, { withCredentials: true, observe: 'response' })
+        .post<IUser>(`${environment.apiUrl}/auth/login`, userData, { withCredentials: true })//, observe: 'response'
         .pipe(
-          tap(response => console.log(response)),
-          map(response => response.body),
-          tap(user => this.currentUser = user)
+          // tap(response => console.log(response)),
+          // map(response => response.body),
+          tap((user) => this.currentUser = user)
         )
         
       }
