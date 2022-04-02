@@ -5,28 +5,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './core/header/header.component';
+import { FooterComponent } from './core/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { UserModule } from './user/user.module';
 import { RecipesModule } from './recipes/recipes.module';
 import { AuthModule } from './auth/auth.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CoreModule } from './core/core.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
-    HeaderComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    RouterModule,
     HttpClientModule,
+    AppRoutingModule,
+    CoreModule.forRoot(),
     UserModule,
     RecipesModule,
-    AuthModule,
-    CommonModule 
+    AuthModule 
   ],
   providers: [],
   bootstrap: [
@@ -34,19 +35,3 @@ import { AuthModule } from './auth/auth.module';
 ]
 })
 export class AppModule { }
-
-// @Injectable() 
-// export class PostService {
-//   constructor(private http: HttpClient) {}
-//   getAllPosts(): Observable<Post[]> {
-//     const url = 'https://jsonplaceholder.typicode.com/posts';
-//     return this.http.get<Post[]>(url);
-//   }
-// }
-
-// interface Post {
-//   userId: number;
-//   id: number;
-//   title: string;
-//   body: string;
-// }

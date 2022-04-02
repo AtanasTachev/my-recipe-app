@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators'
 import { environment } from 'src/environments/environment';
-import { IBase } from '../interfaces/base';
+import { IBase } from '../core/interfaces/base';
 
 export interface CreateUserDto { 
   name: string,
@@ -48,7 +48,7 @@ export class UserService {
       return this.httpClient
         .post<IUser>(`${environment.apiUrl}/auth/login`, userData, { withCredentials: true })//, observe: 'response'
         .pipe(
-          // tap(response => console.log(response)),
+          tap(response => console.log(response)),
           // map(response => response.body),
           tap((user) => this.currentUser = user)
         )
@@ -63,6 +63,8 @@ export class UserService {
     getProfile$(): Observable<IUser> {
       return this.httpClient.get<IUser>(`${environment.apiUrl}/users/profile`, { withCredentials: true })
         .pipe(tap(user => this.currentUser = user))
+    }
+    logout(): void {
     }
 }
 

@@ -18,14 +18,15 @@ export class RegisterComponent implements OnInit {
   }
 
   registerFormGroup: FormGroup = this.formBuilder.group({
+    'name': new FormControl('', [Validators.required, Validators.minLength(5)]),
     'username': new FormControl('', [Validators.required, Validators.minLength(5)]),
     'email': new FormControl('', [Validators.required, emailValidator]),
+    'address': new FormControl(''),
+    'phone': new FormControl(''),
     'passwords': new FormGroup({
       'password': this.passwordControl,
       'repeatPassword': new FormControl('', [passwordMatch(this.passwordControl)]),
-    }),
-    'address': new FormControl(''),
-    'phone': new FormControl('')
+    })
   })
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
@@ -33,15 +34,15 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
   handleRegister(): void {
-    const { name, username, email, passwords, address, phone } = this.registerFormGroup.value;
+    const { name, username, email, address, phone, passwords } = this.registerFormGroup.value;
 
     const body: CreateUserDto = {
       name: name,
       username: username,
       email: email,
-      password: passwords.password,
       address: address,
-      phone: phone
+      phone: phone,
+      password: passwords.password
     }
 
 

@@ -1,5 +1,13 @@
 @font-family-regular: Arial, sans-serif;
 
+.title {
+    position:relative;
+    margin-left: 10%;
+    font-size: 1.5rem;
+    margin-bottom: 0.15rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .form {
     font-family: @font-family-regular;
     list-style: none;
@@ -7,7 +15,7 @@
 .form-box {
     background-color: rgb(73, 188, 233);
     width: 27.5rem;
-    height: 25rem;
+    height: 17.5rem;
     display: flex;
     flex-direction: column;
     border-radius: .5rem;
@@ -32,11 +40,19 @@
 input {
     border-radius: 0.25rem;
 }
-button {
+.register-login {
+    background-color: rgb(28, 129, 160);
     font-family: @font-family-regular;
     margin: 0.5rem;
     width: 21.5rem;
     font-size: 1.15rem;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin-left: 3rem;
+}
+.register-login:hover{
+    background-color: rgb(18, 76, 93);
 }
 .message{
     position: relative;
