@@ -42,9 +42,11 @@ export class UserService {
     console.log('UserService#constructor')
   }
 
-    // getUser$(): Observable<IUser[]>{
-    //   return this.httpClient.get<IUser[]>('https://jsonplaceholder.typicode.com/users')
-    // }
+    getUser$(): Observable<IUser[]>{
+      return this.httpClient.get<IUser[]>(`${environment.apiUrl}/users`)
+    }
+
+    //https://jsonplaceholder.typicode.com/users
 
   login$(userData: { username: string, password: string }): Observable<IUser> {
       return this.httpClient
@@ -53,8 +55,7 @@ export class UserService {
           tap(response => console.log(response)),
           // map(response => response.body),
           tap((user) => this.currentUser = user)
-        )
-        
+          )
       }
       
       register$(userData: CreateUserDto): Observable<IUser> {

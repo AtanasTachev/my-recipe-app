@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './home-page/home-page.component';
+import { HomePageComponent } from './shared/home-page/home-page.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,7 @@ import { AuthModule } from './auth/auth.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RouterModule } from '@angular/router';
     CoreModule.forRoot(),
     UserModule,
     RecipesModule,
-    AuthModule 
+    AuthModule,
+    SharedModule 
   ],
   providers: [],
   bootstrap: [

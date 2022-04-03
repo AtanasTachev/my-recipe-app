@@ -1,8 +1,8 @@
 <form class="form-box" [formGroup]="loginFormGroup" (ngSubmit)="handleLogin()">
     <h3 class="title">login form</h3>
     <ul class="form">
-        <li class="items" name="username">username: <input formControlName="username"></li>
-        <li class="items" name="password">password: <input formControlName="password"></li>
+        <li for="username" class="items" name="username">username: <input type="text" formControlName="username"></li>
+        <li for="password" class="items" name="password">password: <input type="password" formControlName="password"></li>
     </ul>
 
     <button type="button" class="register-login" (click)="handleLogin">login</button>
