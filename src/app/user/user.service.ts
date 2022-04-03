@@ -9,18 +9,20 @@ export interface CreateUserDto {
   name: string,
   username: string, 
   email: string, 
-  password: string,
   address: string,
   phone: string
+  password: string,
+  repeatPassword: string,
 }
 
 export interface IUser extends IBase{
   name: string,
   username: string,
   email: string,
-  password: string,
   address: string,
   phone:string
+  password: string,
+  repeatPassword: string,
 }
 
 @Injectable(
@@ -56,8 +58,8 @@ export class UserService {
       }
       
       register$(userData: CreateUserDto): Observable<IUser> {
-      // console.log(environment.apiUrl);
-      return this.httpClient.post<IUser>(`${environment.apiUrl}/auth/register`, userData, { withCredentials: true })
+      console.log(userData);
+      return this.httpClient.post<IUser>(`${environment.apiUrl}/auth/register`, userData, { withCredentials: false })
     }
 
     getProfile$(): Observable<IUser> {

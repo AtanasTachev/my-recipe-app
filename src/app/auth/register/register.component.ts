@@ -42,12 +42,13 @@ export class RegisterComponent implements OnInit {
       email: email,
       address: address,
       phone: phone,
-      password: passwords.password
+      password: passwords.password,
+      repeatPassword: passwords.repeatPassword
     }
 
 
     this.userService.register$(body).subscribe(() => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     })
   }
 

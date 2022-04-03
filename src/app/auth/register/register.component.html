@@ -1,18 +1,18 @@
 <form class="form-box" [formGroup]="registerFormGroup" (ngSubmit)="handleRegister()">
     <h3 class="title">register form</h3>
     <ul class="form">
-        <li class="items" name="name">name: <input formControlName="name"></li>
-        <li class="items" name="username">username: <input formControlName="username"></li>
-        <li class="items" name="email">email: <input formControlName="email"></li>
-        <li class="items" name="address">address: <input formControlName="address"></li>
-        <li class="items" name="phone">phone: <input formControlName="username"></li>
+        <li for="name" type="text" class="items" name="name">name: <input formControlName="name"></li>
+        <li for="username" type="text" class="items" name="username">username: <input formControlName="username"></li>
+        <li for="email" type="email" class="items" name="email">email: <input formControlName="email"></li>
+        <li for="address" type="text" class="items" name="address">address: <input formControlName="address"></li>
+        <li for="phone" type="text" class="items" name="phone">phone: <input formControlName="phone"></li>
         <li class="items2">
             <ul class="form" formGroupName="passwords">
-                <li class="items" name="password">password: <input formControlName="password"></li>
-                <li class="items" name="repeatPassword">repeat password: <input formControlName="repeatPassword"></li>
+                <li for="password"  class="items" >password: <input name="password" type="password" formControlName="password"></li>
+                <li for="repeatPassword" class="items" >repeat password: <input name="password" type="password" formControlName="repeatPassword"></li>
             </ul>
         </li>
     </ul>
-    <button type="button" class="register-login">register</button>
+    <button type="submit" class="register-login">register</button>
     <a routerLink="/login" class="message">already registered? go to login</a>
 </form>
