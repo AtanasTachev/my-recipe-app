@@ -1,4 +1,4 @@
-<form class="form-box">
+<form class="form-box"[formGroup]="createRecipeFormGroup" (ngSubmit)="handleCreateRecipe()">
     <ul class="form">
         <li class="items" name="title">title: <input type="text" formControlName="title"></li>
         <li class="items" name="timeToCook">time to cook: <input type="text" formControlName="timeToCook"></li>
@@ -7,5 +7,5 @@
         <li class="items" name="imageUrl">image URL: <input type="text" formControlName="imageUrl"></li>
     </ul>
 
-    <button class="create">create recipe</button>
+    <button type="submit" class="create">create recipe</button>
 </form>
