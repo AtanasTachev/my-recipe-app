@@ -1,11 +1,11 @@
 <form class="form-box" [formGroup]="registerFormGroup" (ngSubmit)="handleRegister()">
     <h3 class="title">register form</h3>
     <ul class="form">
-        <li for="name" type="text" class="items" name="name">name: <input formControlName="name"></li>
-        <li for="username" type="text" class="items" name="username">username: <input formControlName="username"></li>
-        <li for="email" type="email" class="items" name="email">email: <input formControlName="email"></li>
-        <li for="address" type="text" class="items" name="address">address: <input formControlName="address"></li>
-        <li for="phone" type="text" class="items" name="phone">phone: <input formControlName="phone"></li>
+        <li for="name" class="items" name="name">name: <input type="text" formControlName="name"></li>
+        <li for="username" class="items" name="username">username: <input type="text" formControlName="username"></li>
+        <li for="email" class="items" name="email">email: <input type="email" formControlName="email"></li>
+        <li for="address" class="items" name="address">address: <input type="text" formControlName="address"></li>
+        <li for="phone" class="items" name="phone">phone: <input type="text" formControlName="phone"></li>
         <li class="items2">
             <ul class="form" formGroupName="passwords">
                 <li for="password"  class="items" >password: <input name="password" type="password" formControlName="password"></li>
