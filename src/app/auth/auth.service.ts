@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserDetails } from '../core/interfaces/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -9,25 +10,38 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
 
-  private authToken: string;
+  private accessToken: string;
 
   constructor(private http: HttpClient, private router: Router) { }
 
   private saveToken(token: string): void {
     localStorage.setItem('mean-token', token);
-    this.authToken = authToken;
+    this.accessToken = accessToken;
   }
 
   private getToken(): string {
-    if (!this.authToken) {
-      this.authToken = localStorage.getItem('mean-token');
+    if (!this.accessToken) {
+      this.accessToken = localStorage.getItem('mean-token');
     }
-    return this.authToken;
+    return this.accessToken;
   }
 
   public logout(): void {
-    this.authToken = '';
+    this.accessToken = '';
     window.localStorage.removeItem('mean-token');
     this.router.navigateByUrl('/');
   }
+
+  public getUserDetails(): UserDetails {
+    const accessToken = this.getToken();
+    let payload;
+    if (accessToken) {
+      payload = accessToken.split('.')[1];
+      payload = window.atob(payload);
+      return JSON.parse(payload);
+    } else {
+      return null;
+    }
+  }
+
 }

@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipesRoutingModule } from './recipe-routing.module';
 import { RecipeService } from './recipe.service';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 
 
 
@@ -14,7 +15,8 @@ import { RecipeService } from './recipe.service';
   declarations: [
     AllRecipesComponent,
     RecipeComponent,
-    CreateRecipeComponent
+    CreateRecipeComponent,
+    RecipeDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { RecipeService } from './recipe.service';
   exports: [
     AllRecipesComponent,
     RecipeComponent,
-    CreateRecipeComponent
+    CreateRecipeComponent,
+    RecipeDetailsComponent
   ],
   providers: [
     RecipeService
