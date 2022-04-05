@@ -39,7 +39,8 @@ export class UserService {
   }
 
   constructor(private httpClient: HttpClient) {
-    console.log('UserService#constructor')
+    console.log('UserService#constructor');
+    // console.log(response);    
   }
 
     getUser$(): Observable<IUser[]>{
@@ -49,6 +50,9 @@ export class UserService {
     //https://jsonplaceholder.typicode.com/users
 
   login$(userData: { username: string, password: string }): Observable<IUser> {
+      // const token = response.accessToken;
+
+
       return this.httpClient
         .post<IUser>(`${environment.apiUrl}/auth/login`, userData, { withCredentials: true })//, observe: 'response'
         .pipe(
@@ -67,7 +71,11 @@ export class UserService {
       return this.httpClient.get<IUser>(`${environment.apiUrl}/users/profile`, { withCredentials: true })
         .pipe(tap(user => this.currentUser = user))
     }
-    logout(): void {
-    }
+    //logout(): void {//Observable<IUser> { //userData: { _id: string, username: string, accessToken: string }
+      // this.token = null;  
+      // this.isAuthenticated = false;  
+      // return this.httpClient.post<IUser>(`${environment.apiUrl}/auth/logout`,  { withCredentials: true }) //userData,
+    //}
+
 }
 

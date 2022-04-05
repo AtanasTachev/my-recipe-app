@@ -8,6 +8,8 @@ import { IUser, UserService } from 'src/app/user/user.service';
 })
 export class HeaderComponent {
 
+  // console.log(this.userService.currentUser);
+
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
@@ -19,9 +21,9 @@ export class HeaderComponent {
   constructor(public userService: UserService) {
 
   }
-
+  
   logoutHandler(): void {
-    this.userService.logout();
+    // this.userService.logout();
   }
 
 }

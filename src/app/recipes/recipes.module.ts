@@ -6,6 +6,7 @@ import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipesRoutingModule } from './recipe-routing.module';
+import { RecipeService } from './recipe.service';
 
 
 
@@ -26,6 +27,9 @@ import { RecipesRoutingModule } from './recipe-routing.module';
     AllRecipesComponent,
     RecipeComponent,
     CreateRecipeComponent
+  ],
+  providers: [
+    RecipeService
   ]
 })
 export class RecipesModule { }

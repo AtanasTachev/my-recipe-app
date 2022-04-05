@@ -29,7 +29,7 @@ import { SharedModule } from './shared/shared.module';
     UserModule,
     RecipesModule,
     AuthModule,
-    SharedModule 
+    SharedModule
   ],
   providers: [],
   bootstrap: [
