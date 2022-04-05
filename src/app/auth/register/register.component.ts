@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TokenPayload } from 'src/app/core/interfaces/auth';
 import { CreateUserDto, UserService } from 'src/app/user/user.service';
 import { emailValidator, passwordMatch } from '../util';
 
@@ -10,6 +11,11 @@ import { emailValidator, passwordMatch } from '../util';
   styleUrls: ['./register.component.less']
 })
 export class RegisterComponent implements OnInit {
+
+  credentials: TokenPayload = {
+    username: '',
+    password: ''
+  };
 
   passwordControl = new FormControl(null, [Validators.required, Validators.minLength(5)]);
 

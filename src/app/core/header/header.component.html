@@ -3,28 +3,29 @@
         <li>
             <a class="links" routerLink="/home">Home</a>
         </li>
-        <li>
-            <a class="links" routerLink="/login">Login</a>
-        </li>
-        <li>
-            <a class="links" routerLink="/register">Register</a>
-        </li>
+        <ng-container *ngIf="!isLogged">
+            <li>
+                <a class="links" routerLink="/login">Login</a>
+            </li>
+            <li>
+                <a class="links" routerLink="/register">Register</a>
+            </li>
+        </ng-container>
         <li>
             <a class="links" routerLink="/all-recipes">All Recipes</a>
         </li>
-    </ul>
-    <div *ngIf="isLogged">
-        <ul>
+        <ng-container *ngIf="isLogged" class="navbar-private">
             <li>
                 <a class="links" routerLink="/create-recipe">Create Recipe</a>
             </li>
             <li>
                 <a href="#" class="links">my profile</a>
             </li>
-            <li>welcome {{currentUser.username}}</li>
+            <li class="user">welcome {{currentUser.username}}</li>
             <li>
-                <a href="#" (click)="logoutHandler()">Logout</a>
+                <a href="#" class="links" (click)="logoutHandler()">Logout</a>
             </li>
-        </ul>
-    </div>
+        </ng-container>
+    </ul>
+
 </nav>

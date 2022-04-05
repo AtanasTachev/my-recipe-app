@@ -1,9 +1,19 @@
 @my-gray: #888888;
 @my-darkgrey: #534f4f;
+@my-pink: pink;
+
 
 .navbar {
     background-color: @my-darkgrey;
     list-style: none;
+    display: flex;
+    margin-top: 0;
+    height: 3rem;
+}
+.navbar-private {
+    background-color: @my-darkgrey;
+    list-style: none;
+    justify-items: end;
     display: flex;
     margin-top: 0;
     height: 3rem;
@@ -20,4 +30,18 @@
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
     color: azure;
+}
+
+.user{
+    position: relative;
+    top: 0.5rem;
+    margin-right: 1rem;
+    border-radius: 0.5rem;
+    height: fit-content;
+    padding: 0.25rem;
+    background-color: @my-pink;
+    font-size: 1.25rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: rgb(17, 19, 19);
 }
