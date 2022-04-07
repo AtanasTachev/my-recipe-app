@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 import { TokenPayload } from 'src/app/core/interfaces/auth';
-import { CreateUserDto, UserService } from 'src/app/user/user.service';
+import { CreateUserDto } from 'src/app/user/user.service';
 import { emailValidator, passwordMatch } from '../util';
 
 @Component({
@@ -11,6 +12,7 @@ import { emailValidator, passwordMatch } from '../util';
   styleUrls: ['./register.component.less']
 })
 export class RegisterComponent implements OnInit {
+  [x: string]: any;
 
   credentials: TokenPayload = {
     username: '',
@@ -35,7 +37,7 @@ export class RegisterComponent implements OnInit {
     })
   })
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -53,7 +55,7 @@ export class RegisterComponent implements OnInit {
     }
 
 
-    this.userService.register$(body).subscribe(() => {
+    this.authService.register$(body).subscribe(() => {
       this.router.navigate(['/home']);
     })
   }

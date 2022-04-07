@@ -7,8 +7,8 @@
 // }
 
 // export class StorageService implements IStorage {
-//   setItem<T>(key, item): T { return item; }
-//   getItem<T>(key): T { return null; }
+//   setItem<T>(key: any, item: T): T { return item; }
+//   getItem<T>(key: any): T { return null; }
 // }
 
 // export function storageFactory(platformId: string): any {

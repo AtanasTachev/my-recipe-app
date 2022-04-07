@@ -4,11 +4,17 @@ import { UserService } from '../user/user.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+import { TokenInterceptor } from './token.interceptor';
+import { ProfileComponent } from './profile/profile.component';
+// import { storageServiceProvider } from './storage.service';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +31,18 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-        UserService
+        UserService,
+        // storageServiceProvider,
+        {
+          provide: HTTP_INTERCEPTORS,
+          multi: true,
+          useClass: AuthInterceptor
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: TokenInterceptor,
+          multi: true
+        },
       ]
     }
   }

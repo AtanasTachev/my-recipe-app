@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,16 @@ import { SharedModule } from './shared/shared.module';
     AuthModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (authService: AuthService) => {
+        return () => authService.authenticate();
+      },
+      deps: [AuthService],
+      multi: true
+    }
+  ],
   bootstrap: [
     AppComponent
 ]

@@ -3,7 +3,7 @@
         <li>
             <a class="links" routerLink="/home">Home</a>
         </li>
-        <ng-container *ngIf="!isLogged">
+        <ng-container *ngIf="!(isLoggedIn$ | async)">
             <li>
                 <a class="links" routerLink="/login">Login</a>
             </li>
@@ -14,16 +14,16 @@
         <li>
             <a class="links" routerLink="/all-recipes">All Recipes</a>
         </li>
-        <ng-container *ngIf="isLogged" class="navbar-private">
+        <ng-container *ngIf="(isLoggedIn$ | async)" class="navbar-private">
             <li>
                 <a class="links" routerLink="/create-recipe">Create Recipe</a>
             </li>
             <li>
                 <a href="#" class="links">my profile</a>
             </li>
-            <li class="user">welcome {{currentUser.username}}</li>
+            <li class="user">welcome {{(currentUser$ | async).username}}</li>
             <li>
-                <a href="#" class="links" (click)="logoutHandler()">Logout</a>
+                <a href="javascript:void(0)" class="links" (click)="logoutHandler()">Logout</a>
             </li>
         </ng-container>
     </ul>
