@@ -35,13 +35,13 @@ export class AuthService {
     return this.httpClient.post<IUser>(`${environment.apiUrl}/auth/register`, userData, { withCredentials: true })
   }
 
-  // authenticate(): Observable<IUser> {
-  //   return this.httpClient
-  //     .get<IUser>(`${environment.apiUrl}/auth/profile`, { withCredentials: true })
-  //     .pipe(tap(currentProfile => this.handleLogin(currentProfile)), catchError((err) => {
-  //       return EMPTY;
-  //     }))
-  // }
+  authenticate(): Observable<IUser> {
+    return this.httpClient
+      .get<IUser>(`${environment.apiUrl}/auth/profile`, { withCredentials: true })
+      .pipe(tap(currentProfile => this.handleLogin(currentProfile)), catchError((err) => {
+        return EMPTY;
+      }))
+  }
 
   handleLogin(newUser: IUser) {
     this._currentUser.next(newUser);

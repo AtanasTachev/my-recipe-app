@@ -8,4 +8,6 @@ export interface IUser extends IBase{
     phone:string
     password: string,
     repeatPassword: string,
+    myRecipes: [string],
+    likedRecipes: [string]
   }

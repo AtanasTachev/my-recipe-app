@@ -9,7 +9,8 @@ export interface CreateRecipeDto {
   timeToCook: string,
   ingredients: string,
   howToCook: string,
-  imageUrl: string
+  imageUrl: string,
+  // creator: string
 }
 
 export interface IRecipe extends IBase{
@@ -17,7 +18,8 @@ export interface IRecipe extends IBase{
   "timeToCook": string,
   "ingredients": string,
   "howToCook": string,
-  "imageUrl":string
+  "imageUrl":string,
+  // "creator": string
 }
 
 @Injectable({

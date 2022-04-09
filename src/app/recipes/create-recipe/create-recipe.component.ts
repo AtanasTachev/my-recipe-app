@@ -9,7 +9,8 @@ import { CreateRecipeDto, RecipeService } from '../recipe.service';
   styleUrls: ['./create-recipe.component.less']
 })
 export class CreateRecipeComponent implements OnInit {
-
+  
+  
   createRecipeFormGroup: FormGroup = this.formBuilder.group({
     'title': new FormControl('', [Validators.required, Validators.minLength(5)]),
     'timeToCook': new FormControl('', [Validators.required, Validators.minLength(5)]),
@@ -17,10 +18,11 @@ export class CreateRecipeComponent implements OnInit {
     'howToCook': new FormControl(''),
     'imageUrl': new FormControl(''),
   })
-
+  
   constructor(private formBuilder: FormBuilder, private recipeService: RecipeService, private router: Router) { }
-
+  
   ngOnInit(): void {
+    // console.log(user);
   }
   handleCreateRecipe(): void {
     const { title, timeToCook, ingredients, howToCook, imageUrl } = this.createRecipeFormGroup.value;
@@ -30,7 +32,8 @@ export class CreateRecipeComponent implements OnInit {
       timeToCook: timeToCook,
       ingredients: ingredients,
       howToCook: howToCook,
-      imageUrl: imageUrl
+      imageUrl: imageUrl,
+      // creator: user._id
     }
 
 
