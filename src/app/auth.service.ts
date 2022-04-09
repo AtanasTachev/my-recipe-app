@@ -20,7 +20,7 @@ export class AuthService {
 
   login$(userData: { username: string, password: string }): Observable<IUser | null> {
     return this.httpClient
-      .post<IUser>(`${environment.apiUrl}/login`, userData, { withCredentials: true, observe: 'response' })
+      .post<IUser>(`${environment.apiUrl}/auth/login`, userData, { withCredentials: true, observe: 'response' })
       .pipe(
         map(response => response.body),
       )
@@ -28,20 +28,20 @@ export class AuthService {
 
   logout$(): Observable<void> {
     return this.httpClient
-      .post<void>(`${environment.apiUrl}/logout`, {}, { withCredentials: true })
+      .post<void>(`${environment.apiUrl}/auth/logout`, {}, { withCredentials: true })
   }
 
   register$(userData: CreateUserDto): Observable<IUser> {
-    return this.httpClient.post<IUser>(`${environment.apiUrl}/register`, userData, { withCredentials: true })
+    return this.httpClient.post<IUser>(`${environment.apiUrl}/auth/register`, userData, { withCredentials: true })
   }
 
-  authenticate(): Observable<IUser> {
-    return this.httpClient
-      .get<IUser>(`${environment.apiUrl}/users/profile`, { withCredentials: true })
-      .pipe(tap(currentProfile => this.handleLogin(currentProfile)), catchError((err) => {
-        return EMPTY;
-      }))
-  }
+  // authenticate(): Observable<IUser> {
+  //   return this.httpClient
+  //     .get<IUser>(`${environment.apiUrl}/auth/profile`, { withCredentials: true })
+  //     .pipe(tap(currentProfile => this.handleLogin(currentProfile)), catchError((err) => {
+  //       return EMPTY;
+  //     }))
+  // }
 
   handleLogin(newUser: IUser) {
     this._currentUser.next(newUser);

@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  errorMessage: string = '';
+  // errorMessage: string = '';
 
   loginFormGroup: FormGroup = this.formBuilder.group({
     username: new FormControl('', [Validators.required]),
@@ -28,17 +28,18 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   handleLogin(): void {
-    this.errorMessage = '';
+    // this.errorMessage = '';
     this.authService.login$(this.loginFormGroup.value).subscribe({
       next: user => {
         console.log(user);
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       },
       complete: () => {
         console.log('login stream completed')
       },
       error: (err) => {
-        this.errorMessage = err.error.message;
+        // this.errorMessage = err.error.message;
+        console.log(err)
       }
     });
   }

@@ -29,14 +29,14 @@ import { AuthService } from './auth.service';
     SharedModule
   ],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: (authService: AuthService) => {
-        return () => authService.authenticate();
-      },
-      deps: [AuthService],
-      multi: true
-    }
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: (authService: AuthService) => {
+    //     return () => authService.authenticate();
+    //   },
+    //   deps: [AuthService],
+    //   multi: true
+    // }
   ],
   bootstrap: [
     AppComponent

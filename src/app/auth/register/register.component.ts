@@ -12,12 +12,12 @@ import { emailValidator, passwordMatch } from '../util';
   styleUrls: ['./register.component.less']
 })
 export class RegisterComponent implements OnInit {
-  [x: string]: any;
+  // [x: string]: any;
 
-  credentials: TokenPayload = {
-    username: '',
-    password: ''
-  };
+  // credentials: TokenPayload = {
+  //   username: '',
+  //   password: ''
+  // };
 
   passwordControl = new FormControl(null, [Validators.required, Validators.minLength(5)]);
 
