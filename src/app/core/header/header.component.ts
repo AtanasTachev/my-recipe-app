@@ -34,6 +34,8 @@ export class HeaderComponent {
   constructor(public authService: AuthService, public router: Router) {
 
   }
+
+  
     
   logoutHandler(): void {
 
