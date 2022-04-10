@@ -23,6 +23,8 @@ export class ProfileComponent implements OnInit {
         this.router.navigate(['/login'])
       }
     })
+
+    this.store.dispatch(profilePageInitalized());
   }
 
 }

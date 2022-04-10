@@ -12,6 +12,9 @@ import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { AuthService } from './auth.service';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { AuthService } from './auth.service';
     UserModule,
     RecipesModule,
     AuthModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [
     // {

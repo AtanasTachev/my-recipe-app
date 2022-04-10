@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IBase } from '../core/interfaces/base';
+import { IRecipe } from '../core/interfaces/recipe';
 
 export interface CreateRecipeDto { 
   title: string,
@@ -13,14 +14,7 @@ export interface CreateRecipeDto {
   // creator: string
 }
 
-export interface IRecipe extends IBase{
-  "title": string,
-  "timeToCook": string,
-  "ingredients": string,
-  "howToCook": string,
-  "imageUrl":string,
-  // "creator": string
-}
+
 
 @Injectable({
   providedIn: 'root'
