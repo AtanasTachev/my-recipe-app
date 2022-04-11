@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/auth.service';
+import { IAuthModuleState } from '../+store';
+import { initializeLoginState, loginProcessError, startLoginProcess } from '../+store/actions';
 // import { emailValidator } from '../util';
+
+const myRequired = (control: AbstractControl) => {
+  return Validators.required(control);
+}
 
 @Component({
   selector: 'app-login',
@@ -21,25 +28,37 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router) { }
-  
+    private store: Store<IAuthModuleState>,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+    ) { }
   
 
   ngOnInit(): void {
   }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(initializeLoginState());
+  }
+
   handleLogin(): void {
     // this.errorMessage = '';
+    this.store.dispatch(startLoginProcess());
     this.authService.login$(this.loginFormGroup.value).subscribe({
-      next: user => {
-        console.log(user);
-        this.router.navigate(['/home']);
+      next: () => {
+        if (this.activatedRoute.snapshot.queryParams['redirect-to']) {
+          this.router.navigateByUrl(this.activatedRoute.snapshot.queryParams['redirect-to'])
+        } else {
+          this.router.navigate(['/home']);
+        }
+
       },
       complete: () => {
         console.log('login stream completed')
       },
       error: (err) => {
         // this.errorMessage = err.error.message;
-        console.log(err)
+        this.store.dispatch(loginProcessError({ errorMessage: err.error.message }))
       }
     });
   }
