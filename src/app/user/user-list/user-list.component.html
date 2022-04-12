@@ -2,7 +2,8 @@
     <li *ngFor="let user of users">
         <div class="single-user">
             <span>{{user.username}}</span>
-            <p>{{user.myRecipes}}</p>
+            <p>my recipes: {{user.myRecipes}}</p>
+            <p>liked recipes: {{user.likedRecipes}}</p>
         </div>
     </li>
 </ul>

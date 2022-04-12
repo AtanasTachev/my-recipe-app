@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
 import { IAuthModuleState } from '../+store';
 import { initializeLoginState, loginProcessError, startLoginProcess } from '../+store/actions';
+import { loginErrorMessageSelector, loginIsLoginPendingSelector } from '../+store/selectors';
 // import { emailValidator } from '../util';
 
 const myRequired = (control: AbstractControl) => {
@@ -18,10 +20,13 @@ const myRequired = (control: AbstractControl) => {
 })
 export class LoginComponent implements OnInit {
 
+  errorMessage$: Observable<string> = this.store.select(loginErrorMessageSelector);
+  isLoginPending$: Observable<boolean> = this.store.select(loginIsLoginPendingSelector);
+
   // errorMessage: string = '';
 
   loginFormGroup: FormGroup = this.formBuilder.group({
-    username: new FormControl('', [Validators.required]),
+    username: new FormControl('', {validators: [myRequired], updateOn: 'submit' }),
     password: new FormControl('', [Validators.required, Validators.minLength(5)])
   });
 

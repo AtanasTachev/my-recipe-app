@@ -17,8 +17,8 @@ export function emailValidator(control: AbstractControl): ValidationErrors | nul
 
 
 export function passwordMatch(passwordFormControl: AbstractControl) {
-    const validtorFn: ValidatorFn = (rePasswordFormControl: AbstractControl) => {
-        if (passwordFormControl.value !== rePasswordFormControl.value) {
+    const validtorFn: ValidatorFn = (repeatPasswordFormControl: AbstractControl) => {
+        if (passwordFormControl?.value !== repeatPasswordFormControl?.value) {
             return {
                 passwordMissmatch: true
             }
@@ -37,8 +37,8 @@ export function passwordMatch2(passwordFormControl: AbstractControl): Validation
         return null;
     }
 
-    const { password, rePassword } = passwordGroup.controls;
-    if (password.value !== rePassword.value) {
+    const { password, repeatPassword } = passwordGroup.controls;
+    if (password?.value !== repeatPassword?.value) {
         return {
             passwordMatch2: true
         }
