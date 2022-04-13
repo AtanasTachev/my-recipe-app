@@ -6,7 +6,8 @@ import {
   HttpInterceptor,
   HttpResponse
 } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators'
 import { IUser } from './interfaces/user';
 
 import { AuthService } from '../auth.service';

@@ -16,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { IRootState, currentUserReducer } from './+store';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,12 @@ import { EffectsModule } from '@ngrx/effects';
     RecipesModule,
     AuthModule,
     SharedModule,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreModule.forRoot<IRootState>({
+      currentUser: currentUserReducer,
+    }),
+    StoreDevtoolsModule.instrument({ 
+      maxAge: 25, 
+      logOnly: environment.production }),
     EffectsModule.forRoot([])
   ],
   providers: [
