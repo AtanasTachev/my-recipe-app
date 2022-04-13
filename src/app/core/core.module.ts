@@ -6,6 +6,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import { TokenInterceptor } from './token.interceptor';
 import { RouterModule } from '@angular/router';
+import { storageServiceProvider } from './storage.service';
+import { UserService } from '../user/user.service';
+import { RecipeService } from '../recipes/recipe.service';
 // import { storageServiceProvider } from './storage.service';
 
 @NgModule({
@@ -28,7 +31,9 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-        // storageServiceProvider,
+        storageServiceProvider,
+        UserService,
+        RecipeService,
         {
           provide: HTTP_INTERCEPTORS,
           multi: true,

@@ -36,14 +36,14 @@ import { EffectsModule } from '@ngrx/effects';
     EffectsModule.forRoot([])
   ],
   providers: [
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: (authService: AuthService) => {
-    //     return () => authService.authenticate();
-    //   },
-    //   deps: [AuthService],
-    //   multi: true
-    // }
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (authService: AuthService) => {
+        return () => authService.authenticate();
+      },
+      deps: [AuthService],
+      multi: true
+    }
   ],
   bootstrap: [
     AppComponent

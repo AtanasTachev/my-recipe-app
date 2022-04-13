@@ -5,7 +5,7 @@ import { UserService } from "src/app/user/user.service";
 import { profilePageInitalized, profileLoaded, profileLoadError } from "./actions";
 
 @Injectable()
-export class ProfileEffect {
+export class ProfileEffects {
     constructor(private actions$: Actions, private userService: UserService) {}
 
     onProfilePageLoaded$ = createEffect(() =>
