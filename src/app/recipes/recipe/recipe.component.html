@@ -3,7 +3,7 @@
         <div class="single">
             <h3 class="recipe-title">{{recipe.title}}</h3>
             <img class="small" src={{recipe.imageUrl}} alt="recipe-prepared"/>
-            <button class="details-btn" [routerLink]="['/recipe', recipe._id]">Details</button>
+            <button class="details-btn" [routerLink]="['/recipe', recipe._id, 'details']">Details</button>
         </div>
     </li>
 </ul>

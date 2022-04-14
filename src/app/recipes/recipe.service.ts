@@ -29,7 +29,7 @@ export class RecipeService {
     return this.httpClient.get<IRecipe[]>(environment.apiUrl)
   }
   loadRecipeById(id: string): Observable<IRecipe> {
-    return this.httpClient.get<IRecipe>(`${apiUrl}/recipe/${id}`, { withCredentials: true });
+    return this.httpClient.get<IRecipe>(`${apiUrl}/recipe/${id}/details`, { withCredentials: true });
   }
 
   likeRecipe(recipeId: string): Observable<void> {
