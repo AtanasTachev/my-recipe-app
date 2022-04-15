@@ -3,7 +3,9 @@
         <div class="single">
             <h3 class="recipe-title">{{recipe.title}}</h3>
             <img class="small" src={{recipe.imageUrl}} alt="recipe-prepared"/>
-            <button class="details-btn" [routerLink]="['/recipe', recipe._id, 'details']">Details</button>
+            <ng-container *ngIf="(isLoggedIn$ | async)">
+                <button class="details-btn" [routerLink]="['/recipe', recipe._id, 'details']">Details</button>
+            </ng-container>
         </div>
     </li>
 </ul>

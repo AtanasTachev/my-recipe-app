@@ -38,7 +38,7 @@ export class RecipeDetailsComponent implements OnInit {
       .subscribe(([recipe, user]) => {
         this.currentUser = user
         this.recipe = recipe;
-        this.canSubscribe = user && !this.recipe.subscribers.includes(user?._id);
+        // this.canSubscribe = user && !this.recipe.subscribers.includes(user?._id);
         this.isUserOwner = user && this.recipe.userId === user._id;
       });
   }

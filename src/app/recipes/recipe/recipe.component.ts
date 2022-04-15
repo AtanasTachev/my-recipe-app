@@ -1,8 +1,10 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
 import { IRecipe } from 'src/app/core/interfaces/recipe';
 import { RecipeService } from '../recipe.service';
+
+// @Injectable({ providedIn: 'root' });
 
 @Component({
   selector: 'app-recipe',
@@ -12,7 +14,7 @@ import { RecipeService } from '../recipe.service';
 export class RecipeComponent implements OnInit{
 
   isLoggedIn$: Observable<boolean> = this.authService.isLoggedIn$;
-  canSubscribe$!: Observable<boolean>;
+  // canSubscribe$!: Observable<boolean>;
 
   @Input() recipe!: IRecipe;
   recipes: IRecipe[] = [];
@@ -27,12 +29,12 @@ export class RecipeComponent implements OnInit{
     })
   }
   ngOnChanges(): void {
-    this.canSubscribe$ = this.authService.currentUser$.pipe(map((currentUser) => {
-      if (!currentUser || !this.recipe) {
-        return false;
-      }
+    // this.canSubscribe$ = this.authService.currentUser$.pipe(map((currentUser) => {
+    //   if (!currentUser || !this.recipe) {
+    //     return false;
+    //   }
 
-      return !this.recipe.subscribers.includes(currentUser._id);
-    }))
+    //   return !this.recipe.subscribers.includes(currentUser._id);
+    // }))
   }
 }
