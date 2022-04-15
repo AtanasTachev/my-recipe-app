@@ -24,9 +24,13 @@ export interface CreateRecipeDto {
 export class RecipeService {
   
   constructor(private httpClient: HttpClient) {}
+
+  // getUser$(): Observable<IUser[]>{
+  //   return this.httpClient.get<IUser[]>(`${environment.apiUrl}/users`)
+  // }
   
-  getRecipe$(): Observable<IRecipe[]>{
-    return this.httpClient.get<IRecipe[]>(environment.apiUrl)
+  getRecipes$(): Observable<IRecipe[]>{
+    return this.httpClient.get<IRecipe[]>(`${apiUrl}/all-recipes`)
   }
   loadRecipeById(id: string): Observable<IRecipe> {
     return this.httpClient.get<IRecipe>(`${apiUrl}/recipe/${id}/details`, { withCredentials: true });

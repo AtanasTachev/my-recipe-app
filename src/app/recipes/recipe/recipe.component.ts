@@ -9,7 +9,7 @@ import { RecipeService } from '../recipe.service';
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.less']
 })
-export class RecipeComponent implements OnInit, OnChanges{
+export class RecipeComponent implements OnInit{
 
   isLoggedIn$: Observable<boolean> = this.authService.isLoggedIn$;
   canSubscribe$!: Observable<boolean>;
@@ -21,7 +21,7 @@ export class RecipeComponent implements OnInit, OnChanges{
     private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.recipeService.getRecipe$().subscribe(recipes => {
+    this.recipeService.getRecipes$().subscribe(recipes => {
       this.recipes = recipes;
       // console.log(recipes);
     })

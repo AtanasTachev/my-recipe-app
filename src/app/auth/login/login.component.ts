@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
+import { MessageBusService, MessageType } from 'src/app/core/message-bus.service';
 import { IAuthModuleState } from '../+store';
 import { initializeLoginState, loginProcessError, startLoginProcess } from '../+store/actions';
 import { loginErrorMessageSelector, loginIsLoginPendingSelector } from '../+store/selectors';
@@ -18,7 +19,7 @@ const myRequired = (control: AbstractControl) => {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit , OnDestroy{
 
   errorMessage$: Observable<string> = this.store.select(loginErrorMessageSelector);
   isLoginPending$: Observable<boolean> = this.store.select(loginIsLoginPendingSelector);
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private store: Store<IAuthModuleState>,
+    private messageBus: MessageBusService,
     private router: Router,
     private activatedRoute: ActivatedRoute
     ) { }
@@ -56,7 +58,7 @@ export class LoginComponent implements OnInit {
         } else {
           this.router.navigate(['/home']);
         }
-
+        this.messageBus.notifyForMessage({ text: 'User successfully logged in!', type: MessageType.Success })
       },
       complete: () => {
         console.log('login stream completed')
