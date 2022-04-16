@@ -23,29 +23,33 @@ export class HeaderComponent {
   currentUser$: Observable<IUser> = this.authService.currentUser$;
   isLoggedIn$: Observable<boolean> = this.authService.isLoggedIn$;
 
-
+  
   // message: string;
   // isMessageError: boolean;
-
+  
   private isLoggingOut: boolean = false;
-
+  
   // private subscription: Subscription;
-
+  
   constructor(public authService: AuthService, public router: Router) {
-
+    
   }
 
+  print(): void {
+    console.log(this.currentUser$);
+  }
   
-    
+  
+  
   logoutHandler(): void {
-
+    
     if (this.isLoggingOut) {
       return;
     }
-
+    
     this.isLoggingOut = true;
     console.log('logout called');
-
+    
     this.authService.logout$().subscribe({
       next: args => {
         console.log(args);
@@ -57,6 +61,6 @@ export class HeaderComponent {
       error: () => {
         this.isLoggingOut = false;
       }
-  })
- }
+    })
+  }
 }

@@ -19,7 +19,7 @@
                 <a class="links" routerLink="/create-recipe">Create Recipe</a>
             </li>
             <li>
-                <a routerLink="/profile" class="links">my profile</a>
+                <a [routerLink]="['/users', currentUser$ ]" class="links" (click)="print">my profile</a>
             </li>
             <li class="user">welcome {{(currentUser$ | async)!.username}}</li>
             <li>
