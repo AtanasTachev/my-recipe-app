@@ -18,9 +18,9 @@
             <li>
                 <a class="links" routerLink="/create-recipe">Create Recipe</a>
             </li>
-            <li>
-                <a [routerLink]="['/users', currentUser$ ]" class="links" (click)="print">my profile</a>
-            </li>
+            <!-- <li>
+                <a [routerLink]="['/users', userId ]" class="links">my profile</a>
+            </li> -->
             <li class="user">welcome {{(currentUser$ | async)!.username}}</li>
             <li>
                 <a href="javascript:void(0)" class="links" (click)="logoutHandler()">Logout</a>

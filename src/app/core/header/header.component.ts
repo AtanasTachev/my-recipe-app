@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject, combineLatest, mergeMap, Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
+import { UserService } from 'src/app/user/user.service';
 import { IUser } from '../interfaces/user';
 
 @Component({
@@ -22,6 +23,9 @@ export class HeaderComponent {
   // }
   currentUser$: Observable<IUser> = this.authService.currentUser$;
   isLoggedIn$: Observable<boolean> = this.authService.isLoggedIn$;
+  refreshUserRequest$ = new BehaviorSubject(undefined);
+  // userId = this.authService.currentUser$
+
 
   
   // message: string;
@@ -31,13 +35,36 @@ export class HeaderComponent {
   
   // private subscription: Subscription;
   
-  constructor(public authService: AuthService, public router: Router) {
+  constructor(
+    public authService: AuthService, 
+    public router: Router,
+    public activatedRoute: ActivatedRoute,
+    public userService: UserService
+    ) {
     
   }
 
-  print(): void {
-    console.log(this.currentUser$);
-  }
+  // print(): void {
+  //   console.log(this.currentUser$);
+  // }
+  // ngOnInit(): void {
+  // combineLatest([
+  //   this.activatedRoute.params
+  //     .pipe(
+  //       mergeMap(params => {
+  //         const userId = params['userId'];
+  //         return this.refreshUserRequest$.pipe(mergeMap(() => this.userService.getUserById$(userId)))
+  //       })
+  //     ),
+  //   this.authService.currentUser$
+  // ])
+  //   .subscribe(([recipe, user]) => {
+  //     // this.currentUser = user
+  //     // this.user = recipe;
+  //     // this.canSubscribe = user && !this.recipe.subscribers.includes(user?._id);
+  //     // this.isUserOwner = user && this.recipe.userId === user._id;
+  //   });
+  // }
   
   
   

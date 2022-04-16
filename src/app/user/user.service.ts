@@ -60,8 +60,8 @@ export class UserService {
   //     return this.httpClient.post<IUser>(`${environment.apiUrl}/auth/register`, userData, { withCredentials: false })
   //   }
 
-    getProfileById$(userId:string): Observable<IUser> {
-      return this.httpClient.get<IUser>(`${environment.apiUrl}/auth/${userId}/profile`, { withCredentials: true })
+    getUserById$(userId:string): Observable<IUser> {
+      return this.httpClient.get<IUser>(`${environment.apiUrl}/auth/${userId}`, { withCredentials: true })
         // .pipe(tap(user => this.currentUser = user))
     }
 
